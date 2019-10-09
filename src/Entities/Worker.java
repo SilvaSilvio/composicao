@@ -17,11 +17,11 @@ public class Worker {
 
 	}
 
-	public Worker(String nome, Departamento departamento, NivelTrabalho level, Double salarioBase) {
+	public Worker(String nome, NivelTrabalho level, Double salarioBase, Departamento departamento) {
 		this.nome = nome;
-		this.departamento = departamento;
 		this.level = level;
 		this.salarioBase = salarioBase;
+		this.departamento = departamento;
 	}
 
 	public String getNome() {
