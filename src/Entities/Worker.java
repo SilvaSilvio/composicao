@@ -7,29 +7,30 @@ import java.util.List;
 import Entities.enuns.NivelTrabalho;
 
 public class Worker {
-	private String nome;
-	private Departamento departamento;
+	private String name;
 	private NivelTrabalho level;
-	private List<ContratoHora> contrato = new ArrayList<ContratoHora>();
 	private Double salarioBase;
+
+	private Departamento departamento;
+	private List<ContratoHora> contrato = new ArrayList<>();
 
 	public Worker() {
 
 	}
 
 	public Worker(String nome, NivelTrabalho level, Double salarioBase, Departamento departamento) {
-		this.nome = nome;
+		this.name = nome;
 		this.level = level;
 		this.salarioBase = salarioBase;
 		this.departamento = departamento;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String nome) {
+		this.name = nome;
 	}
 
 	public Departamento getDepartamento() {
@@ -61,7 +62,7 @@ public class Worker {
 		return contrato;
 	}
 
-	public void AddContract(ContratoHora contratos) {
+	public void addContract(ContratoHora contratos) {
 		this.contrato.add(contratos);
 	}
 
@@ -69,18 +70,20 @@ public class Worker {
 		this.contrato.remove(contratos);
 	}
 
-	public void calcularSalario(int year, int month) {
-		double soma = salarioBase;
+	/* Esse método foi osso duro */
+
+	public double income(int year, int month) {
+		double sum = salarioBase;
 		Calendar cal = Calendar.getInstance();
 		for (ContratoHora c : contrato) {
 			cal.setTime(c.getDate());
 			int c_year = cal.get(Calendar.YEAR);
 			int c_month = 1 + cal.get(Calendar.MONTH);
 			if (year == c_year && month == c_month) {
-				soma += c.valorHora(); // VERIFICAR ESSA LINHA...
+				sum += c.totalValue();
 			}
-
 		}
+		return sum;
 	}
 
 }

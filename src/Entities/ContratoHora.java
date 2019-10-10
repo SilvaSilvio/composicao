@@ -8,7 +8,6 @@ public class ContratoHora {
 	private Integer hora;
 
 	public ContratoHora(Date date, Double valorHora, Integer hora) {
-		super();
 		this.date = date;
 		this.valorHora = valorHora;
 		this.hora = hora;
@@ -42,7 +41,7 @@ public class ContratoHora {
 		this.hora = hora;
 	}
 
-public double valorHora() {
+public double totalValue() {
 	return valorHora * hora;
 }
 
